@@ -109,19 +109,6 @@ describe('DGMeta', function () {
             });
         });
 
-        it('setURL flush option call flush method', function () {
-            var flushSpy = sinon.spy();
-                flushStub = sinon.stub(DG.Meta.Origin.prototype, 'flush', function () {
-                    flushSpy();
-                });
-
-            origin.setURL('http://demo/data', true);
-
-            expect(flushSpy.callCount).to.be.eql(1);
-
-            flushStub.restore();
-        });
-
         it('getTileData should cache tileData', function () {
             origin.setURL('http://demo/data');
             origin.getTileData({x: 124, y: 12, z: 42, key: '256x256'}, function (tileData) {
